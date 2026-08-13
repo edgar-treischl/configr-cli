@@ -1,0 +1,171 @@
+# Installation
+
+You can install configr-cli from the GitLab repository using pip:
+
+```shell
+# Via HTTPS
+pip install git+https://gitlab.lrz.de/edgar-treischl/configr-cli.git
+
+# Via SSH
+pipx install git+ssh://git@gitlab.lrz.de/edgar-treischl/configr-cli.git
+```
+
+
+After the installation, check in configr is installed via `configr --help`.
+
+```shell
+configr --help
+Usage: configr [OPTIONS] COMMAND [ARGS]...
+
+  configr CLI: Fetch shared config files from the configr repo.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  fetch  Interactively browse and fetch config files from GitLab.
+  ...
+```
+
+
+## Configr start
+
+
+To start the UI with a local repository, use `configr init-local` to set the path. It create a config file (`~/.configr.env`) save your path.  
+
+
+```shell
+configr init-local /Users/edgar/Development/devOps/configr
+```
+
+After the initialization, you can start using `configr-cli` with your local repository via:
+
+```shell
+# Start configr cli
+configr start
+```
+
+
+<img src="https://edgar-treischl.pages.gitlab.lrz.de/configr-cli/images/configr-tui.png" align="center" width="625" />
+
+
+
+
+## Fetch Files via the GitLab Api
+
+
+You need a **Personal Access Token (PAT)** to fetch files via the API:
+
+1. **Generate a GitLab Personal Access Token** with API scope
+2. **Save the PAT** as config file
+3. **Use `configr` to fetch config files anywhere**
+
+
+#### Step 1: Generate a GitLab Personal Access Token (PAT)
+
+1. Go to **GitLab** → **User Settings** → **Access Tokens**
+2. Create a token with the following scope (at minimum):  
+  - `read_api` (for basic operations)  
+  -  or `api` (for full access)
+3. Copy the token — you won't be able to see it again!
+
+
+
+#### Step 2: **Save the PAT** in the `.configr.env` file
+
+After generating the token, save it locally so configr-cli can authenticate. Run the following command:
+
+```shell
+configr init-token
+```
+
+You’ll be prompted to paste your token. It will be saved in the config file. If all worked out to you are read to fetch files.
+
+#### Step 3: **Fetch Config Files**
+
+
+```shell
+configr fetch
+
+configr fetch         
+? Select a config file to fetch: 
+> ansible/deploy-plumbr.yml
+  ansible/deploy-shiny.yml
+  cicd/build_docker.yml
+  cicd/build_pkgdown.yml
+  docker/amtschulverse/Dockerfile
+  docker/r-dev/Dockerfile
+  makefiles/Make_R.mk
+  ❌ Cancel
+```
+
+You probably know what you are look for, say a docker file. Just add the corresponding folder name to get a specific config file.
+
+```shell
+configr fetch docker
+   
+? Select a config file to fetch: 
+> docker/amtschulverse/Dockerfile
+  docker/oddjob/Dockerfile
+  docker/r-dev/Dockerfile
+  ❌ Cancel
+```
+
+Next, configr-cli will fetch the file and ask you what to do with it.
+
+
+```shell
+📥 Fetching 'docker/r-dev/Dockerfile' from edgar-treischl/configr@main...
+? What do you want to do with the file? 
+❯ Print to terminal
+  Save to current directory
+  Cancel
+```
+
+Select a option like print and have fun.
+
+```
+? What do you want to do with the file? Print to terminal
+
+📄 Contents of 'docker/r-dev/Dockerfile':
+
+# r-dev/Dockerfile
+
+# Label the image
+FROM rocker/shiny:latest
+
+LABEL maintainer="edgar.treischl@bayern.isb.de"
+LABEL description="R base for Dev"
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev git openssh-client
+```
+
+
+No worries. If you decide to save the file, configr-cli checks if the same config file exists and asks you before it replaces any file.
+
+
+
+## 🛠 Dev Setup
+
+For a DEV setup, clone the repo, install poetry. Poetry creates and manages the virtual environment.
+
+```bash
+poetry env use python3
+poetry install
+```
+
+To install configr-cli so it is available system-wide:
+
+```
+pipx install .
+```
+
+
+
+
+
+

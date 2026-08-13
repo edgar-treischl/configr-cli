@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "configr-cli"
+version = "0.2.1"
+description = "CLI tool to fetch shared config files from GitLab"
+authors = [{ name="Edgar Treischl", email="edgar.treischl@bayern.isb.de" }]
+readme = "README.md"
+license = { text = "MIT" }
+keywords = ["cli", "gitlab", "config", "automation"]
+requires-python = ">=3.9"
+dependencies = ["click", "requests", "InquirerPy", "pyperclip", "dotenv", "textual>=8.0.0", "rich>=13.0.0"]
+
+[project.scripts]
+configr = "configr_cli.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
