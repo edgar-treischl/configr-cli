@@ -46,7 +46,7 @@ configr start
 ```
 
 
-<img src="https://edgar-treischl.pages.gitlab.lrz.de/configr-cli/images/configr-tui.png" align="center" width="625" />
+<img src="../images/configr-tui.png" align="center" width="625" />
 
 
 
@@ -171,7 +171,6 @@ make tool-install
 
 Run `make help` to list the available development, test, build, lint, and
 documentation commands.
-
 
 
 
