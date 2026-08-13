@@ -1,13 +1,13 @@
 # Installation
 
-You can install configr-cli from the GitLab repository using pip:
+You can install configr-cli from the GitLab repository using uv:
 
 ```shell
 # Via HTTPS
-pip install git+https://gitlab.lrz.de/edgar-treischl/configr-cli.git
+uv tool install git+https://gitlab.lrz.de/edgar-treischl/configr-cli.git
 
 # Via SSH
-pipx install git+ssh://git@gitlab.lrz.de/edgar-treischl/configr-cli.git
+uv tool install git+ssh://git@gitlab.lrz.de/edgar-treischl/configr-cli.git
 ```
 
 
@@ -151,20 +151,26 @@ No worries. If you decide to save the file, configr-cli checks if the same confi
 
 ## 🛠 Dev Setup
 
-For a DEV setup, clone the repo, install poetry. Poetry creates and manages the virtual environment.
+For a development setup, clone the repository and run:
 
 ```bash
-poetry env use python3
-poetry install
+make install
 ```
 
-To install configr-cli so it is available system-wide:
+Run the CLI from the project environment:
 
 ```
-pipx install .
+make cli
 ```
 
+To install configr-cli as an isolated command-line tool:
 
+```
+make tool-install
+```
+
+Run `make help` to list the available development, test, build, lint, and
+documentation commands.
 
 
 

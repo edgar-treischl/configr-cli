@@ -2,12 +2,12 @@ stages:
   - deploy
 
 pages:
-  image: python:3.11
+  image: ghcr.io/astral-sh/uv:python3.11-bookworm-slim
   stage: deploy
   before_script:
-    - pip install mkdocs-material
+    - uv sync --locked
   script:
-    - mkdocs build -d public
+    - uv run mkdocs build -d public
   artifacts:
     paths:
       - public

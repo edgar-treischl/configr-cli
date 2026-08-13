@@ -1,6 +1,6 @@
 site_name: configr-cli
-site_url: https://gitlab.lrz.de/edgar-treischl/configr-cli
-repo_url: https://gitlab.lrz.de/edgar-treischl/configr-cli
+site_url: https://edgar-treischl.github.io/configr-cli/
+repo_url: https://github.com/edgar-treischl/configr-cli
 repo_name: edgar-treischl/configr-cli
 site_author: Edgar Treischl
 site_dir: public
@@ -8,7 +8,7 @@ site_dir: public
 theme:
   name: material
   icon: 
-    repo: fontawesome/brands/gitlab
+    repo: fontawesome/brands/github
   logo: images/logo.png
   palette:
     - scheme: default

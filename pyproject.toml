@@ -13,6 +13,14 @@ keywords = ["cli", "gitlab", "config", "automation"]
 requires-python = ">=3.9"
 dependencies = ["click", "requests", "InquirerPy", "pyperclip", "dotenv", "textual>=8.0.0", "rich>=13.0.0"]
 
+[dependency-groups]
+dev = [
+    "build",
+    "mkdocs-material",
+    "pre-commit",
+    "pytest",
+]
+
 [project.scripts]
 configr = "configr_cli.cli:cli"
 
