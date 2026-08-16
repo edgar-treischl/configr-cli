@@ -1,8 +1,14 @@
+
+---
+title: "configr-cli"
+guide-section: "Getting Started"
+---
+
 > Configr at your fingertips, one command to rule them all.
 
 
 
-# configr-cli <img src="images/logo.png" align="right" width="175" />
+<img src="images/logo.png" align="right" width="175" />
 
 
 <!-- badges: start -->

@@ -1,4 +1,8 @@
-# Installation
+---
+title: "Installation"
+guide-section: "Getting Started"
+---
+
 
 You can install configr-cli from the GitLab repository using pip:
 

@@ -30,10 +30,10 @@ test-coverage: ## Run pytest with coverage report
 	uv run pytest --cov=configr_cli --cov-report=term-showing-missing
 
 build-docs: ## Build documentation with mkdocs
-	uv run mkdocs build -d public
+	uv run great-docs build
 
 serve-docs: ## Serve documentation locally
-	uv run mkdocs serve
+	uv run great-docs preview
 
 run: ## Run the CLI
 	uv run configr --help

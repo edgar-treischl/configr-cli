@@ -10,7 +10,7 @@ authors = [{ name="Edgar Treischl", email="edgar.treischl@bayern.isb.de" }]
 readme = "README.md"
 license = { text = "MIT" }
 keywords = ["cli", "gitlab", "config", "automation"]
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 dependencies = [
     "click",
     "requests",
@@ -19,6 +19,7 @@ dependencies = [
     "python-dotenv",
     "textual>=8.0.0",
     "rich>=13.0.0",
+    "great-docs>=0.17.0",
 ]
 
 [project.optional-dependencies]
@@ -27,8 +28,6 @@ dev = [
     "black",
     "ruff",
     "pre-commit",
-    "mkdocs",
-    "mkdocs-material",
 ]
 
 [project.scripts]
@@ -40,6 +39,4 @@ dev = [
     "black",
     "ruff",
     "pre-commit",
-    "mkdocs",
-    "mkdocs-material",
 ]
