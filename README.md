@@ -1,10 +1,5 @@
 > Configr at your fingertips, one command to rule them all.
 
-
-<p>
-  <img src="user_guide/images/logo.png" style="float: left;"  width="125" />
-</p>
-
 # configr-cli
 
 

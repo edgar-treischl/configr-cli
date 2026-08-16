@@ -7,6 +7,17 @@
 
 navbar_style: sky
 
+logo:
+  light: assets/logo.png
+  dark: assets/logo.png
+
+nav_icons:
+  navbar:
+    User Guide: book-open
+    Reference: code-2
+  sidebar:
+    Getting Started: rocket
+
 # Module Name
 # -----------
 # Importable module name, when it differs from the project name
@@ -216,8 +227,8 @@ authors:
 # live here (language, show_dates, date_format, show_author, show_security)
 # are top-level keys below; setting them under `site` still works and is
 # lifted automatically.
-# site:
-#   theme: flatly            # Quarto theme
+site:
+   theme: simplex            # Quarto theme
 #   toc: true                # Show table of contents
 #   toc-depth: 2             # TOC heading depth
 #   html-math-method: katex  # HTML math renderer (e.g. mathjax)

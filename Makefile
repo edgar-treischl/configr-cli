@@ -31,8 +31,6 @@ test-coverage: ## Run pytest with coverage report
 
 build-docs: ## Build documentation with mkdocs
 	uv run great-docs build
-
-serve-docs: ## Serve documentation locally
 	uv run great-docs preview
 
 run: ## Run the CLI
