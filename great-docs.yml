@@ -5,7 +5,7 @@
 # documented above it. Set only what you want to change: an option you leave
 # out or commented out keeps its default.
 
-navbar_style: sky
+navbar_style: slate
 
 logo:
   light: assets/logo.png
