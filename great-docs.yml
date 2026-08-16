@@ -5,6 +5,8 @@
 # documented above it. Set only what you want to change: an option you leave
 # out or commented out keeps its default.
 
+navbar_style: sky
+
 # Module Name
 # -----------
 # Importable module name, when it differs from the project name
@@ -84,6 +86,9 @@ dynamic: true
 # GitHub repository URL override (e.g. "https://github.com/owner/repo").
 # repo: null
 
+repo: https://github.com/edgar-treischl/configr-cli 
+
+
 # GitHub link style
 # : widget - (default) a widget showing the stars count
 # : icon - a simple icon
@@ -120,8 +125,8 @@ dynamic: true
 
 # CLI Documentation
 # -----------------
-# cli:
-#   enabled: false        # Enable CLI documentation
+cli:
+   enabled: true        # Enable CLI documentation
 #   module: null          # e.g. my_package.cli; auto-detected
 #   name: null            # Click command object; auto-detected
 #   title: null           # Optional index page + sidebar title
@@ -186,9 +191,8 @@ authors:
     role: Author
     # affiliation: 
     email: edgar.treischl@bayern.isb.de
-    # github: 
-    # orcid: 
-    # homepage: 
+    github: edgar-treischl
+    homepage: edgar-treischl.de
 
 # Funding
 # -------
