@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [project]
 name = "configr-cli"
@@ -11,18 +11,35 @@ readme = "README.md"
 license = { text = "MIT" }
 keywords = ["cli", "gitlab", "config", "automation"]
 requires-python = ">=3.9"
-dependencies = ["click", "requests", "InquirerPy", "pyperclip", "dotenv", "textual>=8.0.0", "rich>=13.0.0"]
+dependencies = [
+    "click",
+    "requests",
+    "InquirerPy",
+    "pyperclip",
+    "python-dotenv",
+    "textual>=8.0.0",
+    "rich>=13.0.0",
+]
 
-[dependency-groups]
+[project.optional-dependencies]
 dev = [
-    "build",
-    "mkdocs-material",
+    "pytest>=7.0",
+    "black",
+    "ruff",
     "pre-commit",
-    "pytest",
+    "mkdocs",
+    "mkdocs-material",
 ]
 
 [project.scripts]
 configr = "configr_cli.cli:cli"
 
-[tool.setuptools.packages.find]
-where = ["."]
+[dependency-groups]
+dev = [
+    "pytest>=7.0",
+    "black",
+    "ruff",
+    "pre-commit",
+    "mkdocs",
+    "mkdocs-material",
+]
