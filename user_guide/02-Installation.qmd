@@ -1,17 +1,20 @@
-# Installation
+---
+title: "Installation"
+guide-section: "Getting Started"
+---
 
-You can install configr-cli from the GitLab repository using uv:
+
+You can install configr-cli from the GitLab repository using pip:
 
 ```shell
 # Via HTTPS
-uv tool install git+https://gitlab.lrz.de/edgar-treischl/configr-cli.git
+pip install git+https://gitlab.lrz.de/edgar-treischl/configr-cli.git
 
 # Via SSH
-uv tool install git+ssh://git@gitlab.lrz.de/edgar-treischl/configr-cli.git
+pip install git+ssh://git@gitlab.lrz.de/edgar-treischl/configr-cli.git
 ```
 
-
-After the installation, check in configr is installed via `configr --help`.
+After the installation, check if configr is installed via `configr --help`.
 
 ```shell
 configr --help
@@ -46,7 +49,7 @@ configr start
 ```
 
 
-<img src="../images/configr-tui.png" align="center" width="625" />
+<img src="images/configr-tui.png" align="center" width="625" />
 
 
 
@@ -79,7 +82,7 @@ After generating the token, save it locally so configr-cli can authenticate. Run
 configr init-token
 ```
 
-You’ll be prompted to paste your token. It will be saved in the config file. If all worked out to you are read to fetch files.
+You'll be prompted to paste your token. It will be saved in the config file. If all worked out to you are read to fetch files.
 
 #### Step 3: **Fetch Config Files**
 
@@ -151,26 +154,26 @@ No worries. If you decide to save the file, configr-cli checks if the same confi
 
 ## 🛠 Dev Setup
 
-For a development setup, clone the repository and run:
+For a DEV setup, clone the repo and use UV to install dependencies:
 
 ```bash
-make install
+uv sync
 ```
 
-Run the CLI from the project environment:
+To run the CLI locally:
 
-```
-make cli
-```
-
-To install configr-cli as an isolated command-line tool:
-
-```
-make tool-install
+```bash
+uv run configr --help
 ```
 
-Run `make help` to list the available development, test, build, lint, and
-documentation commands.
+To install configr-cli system-wide:
+
+```bash
+pipx install .
+```
+
+
+
 
 
 

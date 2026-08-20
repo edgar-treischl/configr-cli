@@ -1,10 +1,5 @@
 > Configr at your fingertips, one command to rule them all.
 
-
-<p>
-  <img src="docs/images/logo.png" style="float: left;"  width="125" />
-</p>
-
 # configr-cli
 
 
@@ -25,7 +20,7 @@ configr start
 
 
 
-<img src="docs/images/configr-tui.png" style="display: block; margin: 0 auto;" width="625" />
+<img src="user_guide/images/configr-tui.png" style="display: block; margin: 0 auto;" width="625" />
 
 
 <br/>

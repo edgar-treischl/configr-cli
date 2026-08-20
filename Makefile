@@ -1,51 +1,54 @@
-.DEFAULT_GOAL := help
+.PHONY: help install sync lint format test clean build docs run
 
-.PHONY: help install sync lock upgrade cli tool-install build test lint docs docs-serve
+help: ## Show this help message
+	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-help:
-	@echo configr-cli development commands
-	@echo   make install       Install locked dependencies
-	@echo   make sync          Update the environment from pyproject.toml
-	@echo   make lock          Refresh uv.lock without upgrading packages
-	@echo   make upgrade       Upgrade locked dependencies and sync
-	@echo   make cli           Show the local configr CLI help
-	@echo   make tool-install  Install configr as an isolated CLI tool
-	@echo   make build         Build the wheel and source distribution
-	@echo   make test          Run all tests; use TEST=path::test for one
-	@echo   make lint          Run all pre-commit hooks
-	@echo   make docs          Build documentation with strict checks
-	@echo   make docs-serve    Serve documentation locally
-
-install:
-	uv sync --locked
-
-sync:
+install: ## Install dependencies using UV
 	uv sync
 
-lock:
-	uv lock
+install-cli: ## Install configr-cli system-wide using pipx
+	pipx install .
 
-upgrade:
-	uv lock --upgrade
-	uv sync
+uninstall-cli: ## Uninstall configr-cli from system
+	pipx uninstall configr-cli
 
-cli:
+sync: install ## Alias for install
+
+lint: ## Run pre-commit linting
+	pre-commit run --all-files
+
+format: ## Format code with Black
+	uv run black configr_cli tests
+
+test: ## Run pytest test suite
+	uv run pytest -v
+
+test-quick: ## Run pytest with minimal output
+	uv run pytest -q
+
+test-coverage: ## Run pytest with coverage report
+	uv run pytest --cov=configr_cli --cov-report=term-showing-missing
+
+build-docs: ## Build documentation with mkdocs
+	uv run great-docs build
+	uv run great-docs preview
+
+run: ## Run the CLI
 	uv run configr --help
 
-tool-install:
-	uv tool install --force .
+clean: ## Remove build artifacts, cache, and lock files
+	rm -rf build dist *.egg-info __pycache__ .pytest_cache .coverage
+	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+	find . -type f -name "*.pyc" -delete
 
-build:
-	uv build
+clean-all: clean ## Clean all including UV artifacts
+	rm -rf .venv uv.lock
 
-test:
-	uv run pytest $(TEST)
+dev-setup: install pre-commit-install ## Setup development environment
 
-lint:
-	uv run pre-commit run --all-files
+pre-commit-install: ## Install pre-commit hooks
+	pre-commit install
 
-docs:
-	uv run mkdocs build --strict
+check: lint test ## Run linting and tests
 
-docs-serve:
-	uv run mkdocs serve
+all: install lint test build-docs ## Run full pipeline (install, lint, test, docs)
