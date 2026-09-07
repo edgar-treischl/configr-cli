@@ -21,6 +21,7 @@ _LANG_MAP = {
     ".yml": "yaml",
     ".yaml": "yaml",
     ".sh": "bash",
+    ".ps1": "powershell",
     ".r": "r",
     ".toml": "toml",
     ".json": "json",
